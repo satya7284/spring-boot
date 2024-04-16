@@ -51,8 +51,8 @@ public class ExcelFileController {
 	
 	@GetMapping("/readExcel")
 	public String readExcel() {
-		try(FileInputStream file = new FileInputStream(new File(FILE_LOCATION))) {
-			  List<TestModel> list = ExcelToPojoUtils.toPojoList(TestModel.class, file);
+		try{
+			  List<TestModel> list = ExcelToPojoUtils.toPojoList(TestModel.class, new File(FILE_LOCATION));
 			  
 			  for(TestModel test : list) {
 				  System.out.println(test.getHeader1());
